@@ -1,5 +1,6 @@
 require! './ace-editor'
 require! './ack-button'
+require! './button-group'
 require! './aea-theme'
 require! './assign'
 require! './checkbox'

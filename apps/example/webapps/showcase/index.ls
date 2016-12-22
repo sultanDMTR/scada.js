@@ -72,6 +72,16 @@ ractive = new Ractive do
                 * id: 3
                   content: 'Finally do this'
             log2: []
+
+        button-group1:
+            data:
+                * name: "my button 1"
+                  pressed: no
+                * name: "my button 2"
+                  pressed: no
+                * name: "my button 3"
+                  pressed: no
+
         unix-to-readable: unix-to-readable
 
 ractive.on do
@@ -114,6 +124,14 @@ ractive.on do
         ev.component.fire \state, \doing
         <- sleep 2000ms
         ev.component.fire \state, intended-state
+
+    buttonGroupHandler: (button-list, index, callback) ->
+        <- sleep 1000ms
+        err = if ractive.get('buttonGroup1.simulateError')
+            message: "Something went wrong..."
+        else
+            null
+        callback err
 
     todostatechanged: (ev, list, item-index) ->
         the-item = list[item-index]

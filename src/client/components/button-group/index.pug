@@ -1,0 +1,9 @@
+ul.list-group
+    +each('list')
+        li.list-group-item
+            checkbox(
+                output="{{ .pressed }}"
+                async
+                on-statechange="_itemStateChanged"
+                value="{{ .id }}"
+                ) {{ .name }}

@@ -1,0 +1,6 @@
+.panel.panel-info
+    .panel-heading
+        h3: button-group
+    .panel-body
+        p this is button group: #[checkbox(checked="{{buttonGroup1.simulateError}}") Simulate Error] {{ buttonGroup1.simulateError ? 'yes' : 'no'}}
+        button-group(on-statechange="buttonGroupHandler" list="{{ buttonGroup1.data }}" mode="radio" log="{{ buttonGroup1.log }}")
