@@ -1,8 +1,12 @@
 aea-theme
+    div.pull-right
+        checkbox(checked="{{addMenu2}}" on-statechange="addMenu2") Remove/Add Menu
+    |{{#if addMenu2}}
     aea-menu2(menu="{{menu}}" debug="{{ menuDebug }}")
         icon-user
         span John DOE
         checkbox(checked="{{ menuDebug }}") Debug?
+    |{{/if}}
 
     aea-content
         +partial('header')

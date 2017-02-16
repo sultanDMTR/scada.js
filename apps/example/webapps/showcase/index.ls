@@ -8,6 +8,7 @@ ractive = new Ractive do
     el: '#main-output'
     template: RACTIVE_PREPARSE('layout.pug')
     data:
+        add-menu2: no
         db: db
         my-table: my-table
         button:
@@ -339,16 +340,16 @@ ractive.on do
             """
         ev.component.fire \info, message: html: string
 
-    /*
-    delete-product: (i) ->
-        products = ractive.get \combobox.products
-        products.splice (parse-int i), 1
-        ractive.set \combobox.products, products
-    */
-
     delete-products: (i) ->
         products = ractive.get \combobox.case2
         index = parse-int i
         products.splice index, 1
         ractive.set \combobox.case2, products
-        debugger
+
+    add-menu2: (ev, curr-state, intended-state, value) ->
+        ev.component.fire \state, intended-state
+        /*
+        if intended-state is \unchecked
+            elem = ractive.find-component \aea-theme .components.aea-menu2
+            elem.parentNode.removeChild(elem);
+            return false;

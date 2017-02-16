@@ -3,13 +3,19 @@ Ractive.components['r-table'] = Ractive.extend do
     template: RACTIVE_PREPARSE('index.pug')
     isolated: yes
     onrender: ->
-        #r-table = @find \table.rwd-table
-        #r-table.parent-element.client-width
-        parent-width = ($ @find \.rwd-table).parent().width()
-        #$ @find \.rwd-table .width(parent-width)
-        width = $ @find \.rwd-table .width()
-        @set \width, width
-        debugger
+        __ = @
+        
+        do get-width-size = ->
+            width = $ __.find \.rwd-table .width()
+            __.set \width, width
+            return width
+
+        $(window).resize ->
+            width = get-width-size!
+            __.set \width, width
+
+
+
     oncomplete: ->
         cols = $ @find 'thead > tr:last-of-type' .children!
         col-names = [..inner-text for cols]
