@@ -516,4 +516,7 @@ Ractive.components['data-table'] = Ractive.extend do
         three-digit: (n) ->
             (Math.round (n * 1000)) / 1000
 
+        float-to-digit: (n) ->
+            (Math.round (n * 10e5)) / 10e5
+            
         unix-to-readable: unix-to-readable
